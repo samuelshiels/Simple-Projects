@@ -4,6 +4,8 @@
 
 Backup files and directories for services and media
 
+Build a series of reusable and generic scripts to:
+
 - Backup locally to /srv/backup/<service_name>
 - Remote backup to network storage
 - Cloud backup to a storage provider (B2) via rclone
@@ -18,6 +20,8 @@ Backup files and directories for services and media
 
 ## Local File Hosting
 
+A locally accessible file upload and hosting service
+
 - Build a REST Server
 - Specify a data standard for ingesting a `File Name` `File MIME Type` and `Data`
 - Restrict file types to a small set of web browser compatible image formats
@@ -28,3 +32,40 @@ Backup files and directories for services and media
 - Ensure the file can be seen in the Web Server
 - In the response to the inbound request return a URL the sender can use to view the file
 
+## Music Library
+
+Scan your music files:
+
+- Find all files in a root directory
+  - Report on each file type (and size)
+  - Allow multiple root directories
+- Find all music files of a certain type (mp3/flac/ape/ogg)
+  - Start with one format and add others afterwards
+- Store their path and last modified times
+- For each file extract a minimal set of tags to uniquely identify the track, artist and album
+- Store this metadata somehow linked to the stored file data
+- When rescanning the directory only rerun the tag retrieval on files whose modified time has updated
+- Report files that are missing critical tag info
+- Extract full size and thumbnail version of the front cover artwork
+- Report if the front cover artwork is missing or low resolution (adjustable?)
+- Record time taken for each step of file and tag retrieval and work out how to improve
+
+### Music Player
+
+From the previously built music library
+
+- Retrieve your music catalogue and knowing that the minimum tags are present display the catalogue
+  - Multiple views
+    - By Artist
+    - By Album
+    - By Album Group
+    - By Track
+    - Multiple root directories
+    - Display album artwork
+      - Display other embedded images?
+  - Play/Stop/Pause tracks/album/artists
+  - Volume
+  - Track scanning
+  - Create playlist
+    - Save in m3u format
+  - Display reports for missing tags and artwork
