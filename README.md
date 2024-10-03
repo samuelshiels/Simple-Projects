@@ -69,3 +69,17 @@ From the previously built music library
   - Create playlist
     - Save in m3u format
   - Display reports for missing tags and artwork
+
+ # Server - Client
+
+ Dynamically create server processes with demand that allows clients to connect to them and run keep alive pings
+
+ - Create a server application that has a socket running under a loop to process inbound messages. Print them to the console for now
+ - Spawn this server into its own thread and store a reference to it.
+   - The server should have some properties that can be retrieved such as total connected clients. Use a message channel.
+ - Create multiple server processes using randomly chosen ports.
+   - Handle ports being used already and retry
+ - Create a client application that connects to the overall application
+ - Have the client receive a port number of an existing server to then connect to.
+   - Send a secret password for clients to present to a server to prevent clients from guessing.
+ - Create new server processes if a server is full
