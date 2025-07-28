@@ -70,7 +70,7 @@ From the previously built music library
     - Save in m3u format
   - Display reports for missing tags and artwork
 
- # Server - Client
+ ## Server - Client
 
  Dynamically create server processes with demand that allows clients to connect to them and run keep alive pings
 
@@ -83,3 +83,10 @@ From the previously built music library
  - Have the client receive a port number of an existing server to then connect to.
    - Send a secret password for clients to present to a server to prevent clients from guessing.
  - Create new server processes if a server is full
+
+## Network Scanning
+
+- Define an IP range
+- Choose and run a network scanning application and parse the results
+- Store the results in a database with a timestamp
+- For each result create a host, port and estimate service reference
